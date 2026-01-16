@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="nav">
+
+    </div>
+
+    <div>
+        <img class="hero-img"
+            src="https://images.everydayhealth.com/images/diet-nutrition/top-worst-foods-should-give-up-00-header-1440x810.jpg?w=991">
+        <h1 class="hero-text">สูตรลับความอร่อย</h1>
+        <p class="text">รวมอาหารและสูตรอาหารง่ายๆเว็บเดียวรับจบ</p>
+    </div>
+
+    <h2>ของหวาน</h2>
+    <div class="container" id="container-card-sweet">
+    </div>
+
+    <h2>ของคาว</h2>
+    <div class="container" id="container-card-cow">
+    </div>
+
+    <h2>เครื่องดื่ม</h2>
+    <div class="container" id="container-card-drink">
+    </div>
+
+    <script>
+        const cardcontainersweet = document.getElementById('container-card-sweet');
+        const cardcontainercow = document.getElementById('container-card-cow');
+        const cardcontainerdrink = document.getElementById('container-card-drink');
+const list = [
+  // --- ประเภท อาหารคาว (savory) 10 เมนูอาหารไทย ---
+  { name: "ต้มยำกุ้ง", image: "https://hot-thai-kitchen.com/wp-content/uploads/2013/03/tom-yum-goong-blog.jpg", type: "savory" },
+  { name: "แกงเขียวหวานไก่", image: "https://www.eatingthaifood.com/wp-content/uploads/2017/02/authentic-thai-green-curry-recipe.jpg", type: "savory" },
+  { name: "ผัดไทยกุ้งสด", image: "https://www.foodandwine.com/thmb/9Vb8WuiTba45J_7HEXV6M58bo2U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Shrimp-Pad-Thai-FT-RECIPE0324-3132ca704bc0457e836127dbda403368.jpg", type: "savory" },
+  { name: "ผัดกะเพราหมูสับ", image: "https://www.tecnoplusthai.com/wp-content/uploads/2025/08/9.3.webp", type: "savory" }, // รูปสวยทั่วไป
+  { name: "ข้าวมันไก่", image: "https://static.thairath.co.th/media/dFQROr7oWzulq5Fa6rpOetuLxWtDW4pGVxTIT2bhWuo8KUmcxGVIisEysxd9YsSVQ0b.jpg", type: "savory" },
+  { name: "แกงพะแนงหมู", image: "https://images.aws.nestle.recipes/original/314321d5a96d1fcde17139af1b069d51_artboard_14.jpg", type: "savory" },
+  { name: "ส้มตำไทย", image: "https://assets.unileversolutions.com/recipes-v2/117478.jpg", type: "savory" },
+  { name: "ข้าวผัดกุ้ง", image: "https://img.wongnai.com/p/1920x0/2018/02/14/021350fce478468b98c775abd057a3c0.jpg", type: "savory" },
+  { name: "ยำวุ้นเส้นทะเล", image: "https://recipe.sgethai.com/wp-content/uploads/2025/09/09092025-spicy-glass-noodle-salad-05.webp", type: "savory" },
+  { name: "หมูทอดกระเทียมพริกไทย", image: "https://i.ytimg.com/vi/j7RRj3OfqAI/maxresdefault.jpg", type: "savory" },
+
+  // --- ประเภท อาหารหวาน (sweet) 10 เมนูขนมไทย ---
+  { name: "ข้าวเหนียวมะม่วง", image: "https://www.eatingthaifood.com/wp-content/uploads/2016/04/mango-sticky-rice.jpg", type: "sweet" },
+  { name: "ขนมชั้น", image: "https://img.kapook.com/u/2024/wanwanat/pandan-layer-cake.jpg", type: "sweet" },
+  { name: "ข้าวเหนียวสังขยา", image: "https://patternpack.org/wp-content/uploads/2024/08/6-3.jpg", type: "sweet" },
+  { name: "บัวลอย", image: "https://f.ptcdn.info/371/081/000/rz7gbk127laZ0YjQvz9FU-o.jpg", type: "sweet" },
+  { name: "ทองหยิบ", image: "https://www.pholfoodmafia.com/wp-content/uploads/2018/08/6%E0%B8%97%E0%B8%AD%E0%B8%87%E0%B8%AB%E0%B8%A2%E0%B8%B4%E0%B8%9A-big.jpg", type: "sweet" },
+  { name: "ฝอยทอง", image: "https://recipe.sgethai.com/wp-content/uploads/2025/05/150525-foi-thong-cover.webp", type: "sweet" },
+  { name: "ขนมครก", image: "https://f.ptcdn.info/474/067/000/q35mcokfaDpD1U7gChg-o.jpg", type: "sweet" },
+  { name: "ข้าวต้มมัด", image: "https://thaisweety.wordpress.com/wp-content/uploads/2017/12/e22e0b882e0b989e0b8b2e0b8a7e0b895e0b989e0b8a1e0b8a1e0b8b1e0b894_01.jpg", type: "sweet" },
+  { name: "ลอดช่อง", image: "https://f.ptcdn.info/287/032/000/1433919781-IMG3046-o.jpg", type: "sweet" },
+  { name: "ขนมเบื้อง", image: "https://img.kapook.com/u/2015/surauch/cook1/thaipancake-1.jpg", type: "sweet" },
+
+  // --- ประเภท เครื่องดื่ม (drink) 10 เมนูไทยยอดฮิต ---
+  { name: "ชาไทยเย็น", image: "https://thaifoodjourney.com/wp-content/uploads/2024/03/Thai-Iced-Tea-Cha-Yen-Recipe-Thai-Food-Journey.jpg", type: "drink" },
+  { name: "น้ำอัญชันมะนาว", image: "https://img.kapook.com/u/2023/wanwanat/687466114.jpg", type: "drink" },
+  { name: "น้ำมะตูม", image: "https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_1140,h_800/https://shopee.co.th/blog/wp-content/uploads/2020/11/shopee-Blog-%E0%B8%AA%E0%B8%A3%E0%B8%A3%E0%B8%9E%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%A1%E0%B8%B0%E0%B8%95%E0%B8%B9%E0%B8%A1-1140x800.jpg", type: "drink" },
+  { name: "กาแฟเย็นไทย", image: "https://images.unsplash.com/photo-1512568400610-62da28bc8a13?w=800", type: "drink" },
+  { name: "น้ำเก็กฮวย", image: "https://inwfile.com/s-gd/dezxyc.jpg", type: "drink" },
+  { name: "น้ำกระเจี๊ยบ", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwPfO2BrskMxPElA5Sq1TTkFXkPPNIg8szGA&s", type: "drink" },
+  { name: "น้ำตะไคร้", image: "https://smoosh.me/wp-content/uploads/2024/02/hot-lemon-grass-juice-cup.webp", type: "drink" },
+  { name: "โอวัลตินเย็น", image: "https://static.cdntap.com/tap-assets-prod/wp-content/uploads/sites/25/2021/06/topntp26iced-chocolate-cafe.jpg?width=700&quality=95", type: "drink" },
+  { name: "น้ำใบเตย", image: "https://static.cdntap.com/tap-assets-prod/wp-content/uploads/sites/25/2021/04/pandan-3.jpg", type: "drink" },
+  { name: "นมสดเย็น", image: "https://app-cciyo.com/images/product/1/390_1.jpg", type: "drink" }
+];
+
+
+        list.forEach(food => {
+            console.log(food.type)
+            const cardl = document.createElement('div');
+            cardl.classList.add('card');
+
+            cardl.innerHTML = `
+            <img src = "${food.image}" >
+            <p>${food.name}</p>
+            `;
+
+            if (food.type === "savory") {
+                cardcontainercow.appendChild(cardl);
+            }
+            else if (food.type === "sweet") {
+                cardcontainersweet.appendChild(cardl);
+            }
+            else if (food.type === "drink") {
+                cardcontainerdrink.appendChild(cardl);
+            }
+
+
+        });
+
+
+    </script>
+</body>
+
+</html>
